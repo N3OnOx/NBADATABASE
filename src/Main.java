@@ -4,6 +4,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner sn = new Scanner(System.in);
         JugadorController jugadorController = new JugadorController();
+        EstadisticasController estadisticasController = new EstadisticasController();
         int opt;
         do {
             mostrarMenu();
@@ -16,6 +17,7 @@ public class Main {
                     jugadorController.bajaJug();
                     break;
                 case 3:
+                    estadisticasController.consultaEstadisticasJugador();
                     break;
                 case 4:
                     break;

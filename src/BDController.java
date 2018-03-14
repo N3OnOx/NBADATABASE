@@ -1,4 +1,5 @@
 import java.sql.*;
+import java.util.ArrayList;
 
 public class BDController {
     private Connection conexion;
@@ -45,5 +46,23 @@ public class BDController {
             e.printStackTrace();
         }
 
+    }
+
+    public ArrayList<Estadisticas> consultaEstJug(int codigo){
+        String sql ="SELECT Nombre, temporada, Puntos_por_partido, Asistencias_por_partido, Tapones_por_partido, Rebotes_por_partido FROM estadisticas INNER JOIN jugadores  ON estadisticas.jugador = jugadores.codigo WHERE codigo = "+codigo+";";
+        ArrayList<Estadisticas> estadisticas = new ArrayList<Estadisticas>();
+        try {
+            System.out.println("Buscando jugador");
+            Statement myStatement = this.conexion.createStatement();
+            ResultSet rs = myStatement.executeQuery(sql);
+            while (rs.next()){
+                estadisticas.add(new Estadisticas(rs.getString("Nombre"),rs.getString("temporada"),rs.getFloat("Puntos_por_partido"),rs.getFloat("Asistencias_por_partido"), rs.getFloat("Tapones_por_partido"),rs.getFloat("Rebotes_por_partido")));
+            }
+            myStatement.close();
+            System.out.println("Ok");
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return estadisticas;
     }
 }
