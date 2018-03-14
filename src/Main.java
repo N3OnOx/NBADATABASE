@@ -1,10 +1,8 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sn = new Scanner(System.in);
-        ArrayList<Jugador> jugadores = new ArrayList<>();
         JugadorController jugadorController = new JugadorController();
         int opt;
         do {
@@ -15,6 +13,7 @@ public class Main {
                     jugadorController.altaJug();
                     break;
                 case 2:
+                    jugadorController.bajaJug();
                     break;
                 case 3:
                     break;

@@ -6,7 +6,7 @@ public class BDController {
 
     BDController(){
         try {
-            this.conexion = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/nba", "root","");
+            this.conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/nba", "root","");
             this.cPrepJugadores = conexion.prepareStatement("SELECT * FROM jugadores");
         }catch (SQLException e){
             e.printStackTrace();
@@ -22,11 +22,25 @@ public class BDController {
     }
 
     public void altaJugador(Jugador jugador){
+        String insert ="INSERT INTO jugadores VALUES(\'" + jugador.getCodigo() + "\',\'" + jugador.getNombre() + "\',\'" + jugador.getProcedencia() + "\',\'" + jugador.getAltura() + "\',\'" + jugador.getPeso() + "\',\'" + jugador.getPosicion() + "\',\'" + jugador.getNombreEquipo() + "\');";
         try {
             Statement myStatement = this.conexion.createStatement();
-            String sql = "INSERT into jugadores VALUES (\'"+jugador.getCodigo()+"\',\'"+jugador.getCodigo()+"\',\'"+jugador.getCodigo()+"\',\'"+jugador.getCodigo()+"\',\'"+jugador.getCodigo()+"\',\'"+jugador.getCodigo()+"\',\'"+jugador.getCodigo()+"\');";
-            myStatement.executeUpdate(sql);
+            myStatement.executeUpdate(insert);
             myStatement.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    public void bajaJugador(int codigo){
+        String delete ="DELETE FROM jugadores WHERE codigo=" + codigo + ";";
+        try {
+            System.out.println("Borrando jugador");
+            Statement myStatement = this.conexion.createStatement();
+            myStatement.executeUpdate(delete);
+            myStatement.close();
+            System.out.println("Ok");
         }catch (SQLException e){
             e.printStackTrace();
         }

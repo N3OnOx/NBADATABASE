@@ -10,6 +10,16 @@ public class Jugador {
     public Jugador() {
     }
 
+    public Jugador(int codigo, String nombre, String procedencia, String altura, int peso, String posicion, String nombreEquipo) {
+        this.codigo = codigo;
+        this.nombre = nombre;
+        this.procedencia = procedencia;
+        this.altura = altura;
+        this.peso = peso;
+        this.posicion = posicion;
+        this.nombreEquipo = nombreEquipo;
+    }
+
     public int getCodigo() {
         return codigo;
     }

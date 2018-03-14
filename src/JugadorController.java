@@ -4,6 +4,7 @@ public class JugadorController {
     BDController jugadorControler;
 
     public JugadorController() {
+        this.jugadorControler = new BDController();
     }
 
     public BDController getJugadorControler() {
@@ -39,6 +40,15 @@ public class JugadorController {
         jugador.setPosicion(sc.nextLine());
         System.out.println("Dime el nombre del equipo: ");
         jugador.setNombreEquipo(sc.nextLine());
-        jugadorControler.altaJugador(jugador);
+        this.jugadorControler.altaJugador(jugador);
+    }
+
+    public void bajaJug(){
+        Scanner sn = new Scanner(System.in);
+        int codigo = 0;
+        System.out.println("Dime el codigo del jugador a eliminar: ");
+        codigo = sn.nextInt();
+        this.jugadorControler.bajaJugador(codigo);
+
     }
 }
