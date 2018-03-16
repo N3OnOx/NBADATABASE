@@ -65,4 +65,20 @@ public class BDController {
         }
         return estadisticas;
     }
+
+    public ArrayList<Estadisticas> maximosAnotadores(String temporada){
+        String sql ="select temporada, Nombre, Puntos_por_partido from estadisticas INNER JOIN jugadores ON estadisticas.jugador = jugadores.codigo where temporada =  \'"+temporada+"\' order by Puntos_por_partido desc limit 10;";
+        ArrayList<Estadisticas> estadisticas = new ArrayList<>();
+        try {
+            System.out.println("Buscando maximos anotadores");
+            Statement myStatement = this.conexion.createStatement();
+            ResultSet rs = myStatement.executeQuery(sql);
+            while (rs.next()){
+                estadisticas.add(new Estadisticas(rs.getString("temporada"),rs.getString("Nombre"),rs.getFloat("Puntos_por_partido")));
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return estadisticas;
+    }
 }

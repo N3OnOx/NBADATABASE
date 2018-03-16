@@ -20,6 +20,7 @@ public class Main {
                     estadisticasController.consultaEstadisticasJugador();
                     break;
                 case 4:
+                    estadisticasController.maximosAnotadores10();
                     break;
                 case 5:
                     break;
@@ -52,5 +53,4 @@ public class Main {
         System.out.println("9. Listado de todos los jugadores de la base de datos con sus estadísticas");
         System.out.println("10. Salir");
     }
-
 }

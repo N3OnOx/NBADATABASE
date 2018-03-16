@@ -30,6 +30,12 @@ public class Estadisticas {
         this.nombre = nombre;
     }
 
+    public Estadisticas(String temporada, String nombre, float puntos_por_partido){
+        this.temporada = temporada;
+        this.nombre = nombre;
+        this.puntos_por_partido = puntos_por_partido;
+    }
+
 
 
     public String getTemporada() {
