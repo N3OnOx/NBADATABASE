@@ -76,9 +76,28 @@ public class BDController {
             while (rs.next()){
                 estadisticas.add(new Estadisticas(rs.getString("temporada"),rs.getString("Nombre"),rs.getFloat("Puntos_por_partido")));
             }
+            rs.close();
+            myStatement.close();
         }catch (SQLException e){
             e.printStackTrace();
         }
         return estadisticas;
+    }
+
+    public ArrayList<Jugador> jugadoresPorEquipo (String equipo){
+        ArrayList<Jugador> jugadores = new ArrayList<>();
+        String sql = "Select * from jugadores where Nombre_equipo = \'"+equipo+"\';";
+        try {
+            Statement myStatement = this.conexion.createStatement();
+            ResultSet rs = myStatement.executeQuery(sql);
+            while (rs.next()){
+                jugadores.add(new Jugador(rs.getInt("codigo"),rs.getString("Nombre"),rs.getString("Procedencia"),rs.getString("Altura"),rs.getInt("Peso"),rs.getString("Posicion"),rs.getString("Nombre_equipo")));
+            }
+            rs.close();
+            myStatement.close();
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
+        return jugadores;
     }
 }

@@ -23,6 +23,7 @@ public class Main {
                     estadisticasController.maximosAnotadores10();
                     break;
                 case 5:
+                    jugadorController.jugadoresPorEquipo();
                     break;
                 case 6:
                     break;

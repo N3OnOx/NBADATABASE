@@ -51,4 +51,14 @@ public class JugadorController {
         this.jugadorControler.bajaJugador(codigo);
 
     }
+
+    public void jugadoresPorEquipo(){
+        Scanner sc = new Scanner(System.in);
+        String equipo = "";
+        System.out.println("Dime el nombre de un equipo");
+        equipo = sc.nextLine();
+        for (Jugador jug : this.jugadorControler.jugadoresPorEquipo(equipo)){
+           System.out.println(jug.toString());
+        }
+    }
 }
